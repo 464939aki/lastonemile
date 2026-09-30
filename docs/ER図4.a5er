@@ -1,0 +1,177 @@
+﻿# A5:ER FORMAT:21
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.21.1 Copyright © 1997 - 2026 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=Mr\qs4G
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=7
+RDBMSTypeName=PostgreSQL
+GenerateDropTableStatement=1
+DropTableIfExists=1
+ForceQuoteIdentifier=1
+CreateFk=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=1
+CreateOrder=Dependent
+ShowTag=1
+ShowCommonAttributes=0
+ShowDisableAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=items
+LName=物資
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=150
+Top=600
+Field="品目ID　","item_id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="品目名","item_name","@VARCHAR(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="在庫数","stock","@INT","NOT NULL",,"0","",$FFFFFFFF,""
+Field="場所","location","@VARCHAR(10)","NOT NULL",,"","",$FFFFFFFF,""
+Field="ジャンルID","genre_id","@INT","NOT NULL",,"","01:食料・飲料 02:衛生・衣料品 03:生活・日用品 04:防寒・睡眠・衣類 05:インフラ・環境整備",$FFFFFFFF,""
+Field="更新日時","updated_at","timestamp with time zone","NOT NULL",,"NOW()","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260820155813
+Position="Main",150,600,367,498
+ZOrder=1
+
+[Entity]
+PName=orders
+LName=注文
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=750
+Top=50
+Field="注文ID","order_id","serial","NOT NULL",0,"","自動生成",$FFFFFFFF,""
+Field="注文番号","order_no","@VARCHAR(7)","NOT NULL",,"","Java側でランダム自動生成",$FFFFFFFF,""
+Field="名前","name","@VARCHAR(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="住所","address","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="電話番号","phone","@VARCHAR(11)","NOT NULL",,"","",$FFFFFFFF,""
+Field="備考","note","TEXT",,,"","",$FFFFFFFF,""
+Field="注文日時","ordered_at","timestamp with time zone",,,"NOW()","",$FFFFFFFF,""
+Field="配送担当者","delivery_staff","@VARCHAR(20)",,,"","",$FFFFFFFF,""
+Field="配送ステータス","delivery_status","@VARCHAR(10)","NOT NULL",,"\q未対応\q","登録時\q未対応\qで登録される",$FFFFFFFF,""
+Field="配送不可理由","notdelivery_note","text",,,"","",$FFFFFFFF,""
+IndexInfo="注文番号",2,"order_no",""
+Index=注文番号=2,order_no
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260907155411
+Position="Main",750,50,463,494
+ZOrder=2
+
+[Entity]
+PName=order_details
+LName=注文詳細
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=950
+Top=750
+Field="注文詳細ID","order_detail_id","serial","NOT NULL",0,"","自動生成される",$FFFFFFFF,""
+Field="品目ID　","item_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="注文ID","order_id","@INT","NOT NULL",,"","",$FFFFFFFF,""
+Field="数量","quantity","@INT","NOT NULL",,"1","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260820154948
+Position="Main",950,750,435,453
+ZOrder=3
+
+[Entity]
+PName=admin
+LName=管理者
+Comment=
+TableInnerOption=
+TableOption=
+Page=MAIN
+Left=150
+Top=50
+Field="管理ID","admin_id","serial","NOT NULL",0,"","自動生成",$FFFFFFFF,""
+Field="名前","name","@VARCHAR(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="パスワード","password","@VARCHAR(255)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20260907161021
+Position="Main",150,50,405,451
+ZOrder=4
+
+[Relation]
+Entity1=items
+Entity2=order_details
+RelationType1=2
+RelationType2=4
+Fields1=item_id
+Fields2=item_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,5019,4981,2206,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20260907161834
+LineMode=0
+Bar1=502
+Bar2=498
+Bar3=221
+TermPos1=R
+TermPos2=R
+ZOrder=5
+
+[Relation]
+Entity1=orders
+Entity2=order_details
+RelationType1=2
+RelationType2=4
+Fields1=order_id
+Fields2=order_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,9552,5601,5569,R,R,""
+Dependence=0
+Caption=
+PName=
+FkOnDeleteOption=cascade
+ModifiedDateTime=20260907161643
+LineMode=0
+Bar1=955
+Bar2=560
+Bar3=557
+TermPos1=R
+TermPos2=R
+ZOrder=6

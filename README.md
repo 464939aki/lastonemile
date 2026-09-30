@@ -111,7 +111,7 @@
 | <strong>言語・ランタイム</strong> | Java 25 (OpenJDK) |
 | <strong>Webコンテナ / APサーバ</strong> | Apache Tomcat 11 |
 | <strong>バックエンドアーキテクチャ</strong> | Java (Jakarta EE / Servlet / JSP) - MVC + DAO パターン |
-| <strong>データベース</strong> | PostgreSQL 18.1（テーブル生成用 [last_onemile_db.sql](last_onemile_db.sql) を同梱） |
+| <strong>データベース</strong> | PostgreSQL 18.1（テーブル生成用 [last_onemile_db.sql](docs/last_onemile_db.sql) を同梱） |
 | <strong>インフラ / ホスティング</strong> | AWS (EC2) |
 | <strong>統合開発環境 (IDE)</strong> | Eclipse |
 | <strong>DB管理・モデリングツール</strong> | A5:SQL Mk-2 |
@@ -157,12 +157,12 @@ AWS 上にデプロイしており、実際に動作をご確認いただけま�
 
 本リポジトリには、設計書駆動開発（PD駆動）において作成した各種仕様書・設計書一式が同梱されています。
 
-* 📄 <strong>[詳細設計書 (PDF)](詳細設計書.pdf)</strong>: トランザクション境界、悲観的ロック、デッドロック防止、入力バリデーション仕様
-* 🗺️ <strong>[画面遷移図 (PDF)](画面遷移図.pdf)</strong>: 全21画面・URLマッピング・画面間セッション変数定義
-* 📐 <strong>[クラス設計書 (PDF)](クラス設計書.pdf)</strong>: パッケージ構成（Filter/Servlet/Model/DAO/Util）、クラス図、メソッド定義
-* 🔌 <strong>[API仕様書 (PDF)](API仕様書.pdf)</strong>: 全28エンドポイントのHTTPメソッド、入出力パラメータ、レスポンス定義
-* 🔄 <strong>[シーケンス図 (PDF)](シーケンス図.pdf)</strong>: 物資申請、取消、ボランティア配送更新、管理者認証フロー
-* 🗄️ <strong>[テーブル定義書 (Excel)](テーブル定義書.xlsx)</strong> / <strong>[ER図 (A5:SQL Mk-2)](ER図4.a5er)</strong>: データベース物理設計・制約定義
+* 📄 <strong>[詳細設計書 (PDF)](docs/詳細設計書.pdf)</strong>: トランザクション境界、悲観的ロック、デッドロック防止、入力バリデーション仕様
+* 🗺️ <strong>[画面遷移図 (PDF)](docs/画面遷移図.pdf)</strong>: 全21画面・URLマッピング・画面間セッション変数定義
+* 📐 <strong>[クラス設計書 (PDF)](docs/クラス設計書.pdf)</strong>: パッケージ構成（Filter/Servlet/Model/DAO/Util）、クラス図、メソッド定義
+* 🔌 <strong>[API仕様書 (PDF)](docs/API仕様書.pdf)</strong>: 全28エンドポイントのHTTPメソッド、入出力パラメータ、レスポンス定義
+* 🔄 <strong>[シーケンス図 (PDF)](docs/シーケンス図.pdf)</strong>: 物資申請、取消、ボランティア配送更新、管理者認証フロー
+* 🗄️ <strong>[テーブル定義書 (Excel)](docs/テーブル定義書.xlsx)</strong> / <strong>[ER図 (A5:SQL Mk-2)](docs/ER図4.a5er)</strong>: データベース物理設計・制約定義
 
 ---
 
@@ -177,12 +177,12 @@ AWS 上にデプロイしており、実際に動作をご確認いただけま�
 * <strong>統合開発環境</strong>: Eclipse（または任意の IDE）
 
 ### 2. データベースの構築（DDLおよび初期データの投入）
-プログラムの実行に必要なテーブル群を生成し、初期データを投入します。リポジトリ直下の SQL ファイルをご利用ください。
+プログラムの実行に必要なテーブル群を生成し、初期データを投入します。リポジトリの `docs/` フォルダ内の SQL ファイルをご利用ください。
 
 1. PostgreSQL にて任意のデータベース（例: `last_onemile_db`）を作成します。
-2. 作成したデータベースに対して、テーブル生成用 DDL（[<strong>`last_onemile_db.sql`</strong>](last_onemile_db.sql)）を実行してテーブルを作成します。  
+2. 作成したデータベースに対して、テーブル生成用 DDL（[<strong>`last_onemile_db.sql`</strong>](docs/last_onemile_db.sql)）を実行してテーブルを作成します。  
    *(※ <code>admin</code>, <code>items</code>, <code>orders</code>, <code>order_details</code> の 4 テーブルおよび外部キー制約が生成されます)*
-3. 続けて、初期マスタデータ投入用 SQL（[<strong>`インサート.txt`</strong>](インサート.txt)）を実行し、管理者アカウント・救援物資・サンプル注文データを登録します。  
+3. 続けて、初期マスタデータ投入用 SQL（[<strong>`インサート.txt`</strong>](docs/インサート.txt)）を実行し、管理者アカウント・救援物資・サンプル注文データを登録します。  
    *(※ A5:SQL Mk-2、pgAdmin、または <code>psql</code> コマンド等から実行可能です)*
 
 ### 3. データベース接続設定ファイルの作成
