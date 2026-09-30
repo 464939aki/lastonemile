@@ -125,16 +125,16 @@
 graph LR
     User["一般被災者 / 要支援者<br>(PC / スマートフォン)"] -->|HTTP / HTTPS| WebServer["AWS EC2<br>(Apache Tomcat 11 / Java 25)"]
     Volunteer["ボランティア配送員<br>(スマートフォン / タブレット)"] -->|HTTP / HTTPS| WebServer
-    Admin["システム管理者<br>(PCブラウザ)"] -->|HTTP / HTTPS<br>(AdminAuthFilter)| WebServer
+    Admin["システム管理者<br>(PCブラウザ / 認証Filter保護)"] -->|HTTP / HTTPS| WebServer
 
-    subgraph Backend [Jakarta EE / Servlet Architecture]
+    subgraph Backend ["Jakarta EE / Servlet Architecture"]
         WebServer --> FilterLayer["Filter層<br>(AdminAuthFilter / EncodingFilter)"]
         FilterLayer --> ServletLayer["Servlet層 (Control)<br>21 Servlets (PRGパターン)"]
         ServletLayer --> DaoLayer["DAO層 (Data Access)<br>ItemDao / OrderDao / AdminDao"]
         DaoLayer --> ModelLayer["Model層<br>Item / Order / OrderDetail / CartItem / Admin"]
     end
 
-    DaoLayer -->|JDBC Connection<br>トランザクション制御 / 行ロック| DB[("PostgreSQL 18.1<br>(admin, items, orders, order_details)")]
+    DaoLayer -->|JDBC / トランザクション制御| DB[("PostgreSQL 18.1<br>(admin, items, orders, order_details)")]
 ```
 
 ---
