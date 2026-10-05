@@ -157,7 +157,8 @@ AWS 上にデプロイしており、実際に動作をご確認いただけま�
 
 本リポジトリには、設計書駆動開発（PD駆動）において作成した要件定義書から各種詳細設計書・データベース定義に至る全ドキュメント一式が同梱されています。
 
-* 🌐 <strong>[Web版 要件定義書 (HTML)](docs/要件定義書5.html)</strong>: システム背景・業務フロー・全画面レイアウトをまとめたWeb構造化要件定義書（※画像参照用 [docs/img/](docs/img/) を同梱）
+* 📄 <strong>[要件定義書 (PDF)](docs/避難所ラストワンマイル物資配送支援アプリ%20要件定義書.pdf)</strong>: システム背景・業務フロー・全画面レイアウトをまとめた要件定義書（※GitHub上で直接閲覧可能）
+* 🌐 <strong>[Web版 要件定義書 (HTML)](https://htmlpreview.github.io/?https://github.com/464939aki/lastonemile/blob/main/docs/%E8%A6%81%E4%BB%B6%E5%AE%9A%E7%BE%A9%E6%9B%B85.html)</strong> （[コード確認用](docs/要件定義書5.html)）: Web構造化要件定義書（※画像参照用 [docs/img/](docs/img/) を同梱）
 * 📊 <strong>[要件定義元資料 (Excel)](docs/Mrs4Gc資料5.xlsx)</strong>: 開発初期に機能要件・画面一覧・画面遷移を整理・抽出した基本設計シート
 * 📄 <strong>[詳細設計書 (PDF)](docs/詳細設計書.pdf)</strong>: トランザクション境界、悲観的ロック、デッドロック防止、入力バリデーション仕様
 * 🗺️ <strong>[画面遷移図 (PDF)](docs/画面遷移図.pdf)</strong>: 全21画面・URLマッピング・画面間セッション変数定義
@@ -223,7 +224,7 @@ db.driver=org.postgresql.Driver
 
 ### 5. AI（Antigravity）協調型プログラム設計書（PD）駆動開発
 要件定義からプログラム完成までわずか 26 日間という短期間で高品質な実務級システムを構築するため、上流工程から一貫した AI 協調開発を導入しました。
-* <strong>要件定義の構造化</strong>: 自ら抽出・整理した機能要件・画面一覧（[`Mrs4Gc資料5.xlsx`](docs/Mrs4Gc資料5.xlsx)）を基に、ブラウザで閲覧可能な構造化ドキュメント（[`要件定義書5.html`](docs/要件定義書5.html)）を策定。
+* <strong>要件定義の構造化</strong>: 自ら抽出・整理した機能要件・画面一覧（[`Mrs4Gc資料5.xlsx`](docs/Mrs4Gc資料5.xlsx)）を基に、ブラウザで閲覧可能な構造化ドキュメント（[要件定義書 (PDF)](docs/避難所ラストワンマイル物資配送支援アプリ%20要件定義書.pdf) / [HTML版プレビュー](https://htmlpreview.github.io/?https://github.com/464939aki/lastonemile/blob/main/docs/%E8%A6%81%E4%BB%B6%E5%AE%9A%E7%BE%A9%E6%9B%B85.html)）を策定。
 * <strong>プログラム設計書の詳細化</strong>: 画面遷移図や業務フローから、クラス・メソッド・SQL・例外フローを網羅した詳細設計書（PD）を作成。
 * <strong>コード生成と客観的検証</strong>: 設計書を基に AI（Antigravity）にコーディングを行わせ、生成されたコードに対して「SQL インジェクション対策（PreparedStatement 徹底）」「XSS サニタイズ」「DB コネクションリーク防止」「悲観的ロックの正当性」を重点的にレビュー・検証するサイクルを徹底しました。
 
